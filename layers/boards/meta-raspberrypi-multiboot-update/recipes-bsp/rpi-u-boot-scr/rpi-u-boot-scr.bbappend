@@ -1,5 +1,3 @@
-inherit logging
-
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 SRC_URI += "file://boot.cmd.pre.in"
 

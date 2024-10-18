@@ -1,5 +1,3 @@
-inherit logging
-
 # Remove default poky fstab to be able to install a custom one
 do_install:append() {
     bbnote "Removing stock fstab from ${PN} - be sure to install a customized one!"

@@ -13,7 +13,6 @@ IMAGE_INSTALL = ""
 PACKAGE_INSTALL = ""
 
 inherit image
-inherit logging
 
 RECOVERY_IMAGE_NAME ?= "recovery-image"
 SYSTEM_IMAGE_NAME ?= "system-image"

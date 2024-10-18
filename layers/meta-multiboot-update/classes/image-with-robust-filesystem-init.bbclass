@@ -2,8 +2,6 @@
 # Configures an image to use the robust filesystem initialization.
 # -------------------
 
-inherit logging
-
 RDEPENDS:${PN} += " \
     robust-filesystem-init \
 "

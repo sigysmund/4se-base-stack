@@ -1,6 +1,5 @@
 # Export the environment variables processed in the system.conf template
 
-inherit logging
 inherit export-multiboot-properties
 
 python __anonymous() {

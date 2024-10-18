@@ -3,8 +3,6 @@
 # Note: As this is an anonymous python function, it will be executed after parsing
 # but before task execution.
 
-inherit logging
-
 python __anonymous() {
     storage_type = d.getVar("STORAGE_TYPE")
     ptable_type = d.getVar("PTABLE_TYPE")

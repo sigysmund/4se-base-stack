@@ -11,8 +11,6 @@
 # The persistent memory device must be specified using the FS_PERSISTENT_DEVICE
 # variable.
 
-inherit logging
-
 FS_PERSISTENT_DEVICE[doc] = "Defines the memory device to be used for persistent data. Attention: Must be a basic /dev/* path!"
 FS_SOFTWARE_MODE[doc]     = "Defines the software mode the system is running in - useful to separate data between system and recovery data. Defaults to 'system'."
 FS_PARTITION_TYPE[doc]    = "Type of partition used for the persistent filesystem. Defaults to 'ext4'."

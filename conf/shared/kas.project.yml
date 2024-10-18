@@ -13,7 +13,7 @@ distro: poky
 
 defaults:
   repos:
-    branch: "kirkstone"
+    branch: "scarthgap"
 
 repos:
   poky:
@@ -65,6 +65,7 @@ local_conf_header:
     # Note: debug-tweaks are not enabled so a ROOT_PWD shall be set!
     CORE_IMAGE_EXTRA_INSTALL = ""
     DISTRO_FEATURES += "rauc"
+    DISTRO_FEATURES += "usrmerge"
 
     # Make the image more lightweight by removing unneeded features
     DISTRO_FEATURES:remove = "3g"
