@@ -74,10 +74,11 @@ If you want to run the `hawkbit` Update Backend Server, you'll also need
 The branches in this repo are aligned with the Yocto project releases.
 
 Currently supported releases:
-- _kirkstone_
+- _scarthgap_
 
-No longer maintained releases:
-- _dunfell_ (no further feature development)
+No longer maintained releases (no further feature development):
+- _kirkstone_
+- _dunfell_ 
 
 Note: You have to checkout the corresponding branch as the build environment and features
 can significantly differ.
@@ -105,7 +106,7 @@ For these, the following images can be built:
 For using QEMU, simply build the `full-image` and run the emulator with
 
 ```bash
-./run-kas shell 
+./run-kas shell conf/kas.<machine>.yml
 runqemu full-image wic nographic ovmf slirp
 ```
 
