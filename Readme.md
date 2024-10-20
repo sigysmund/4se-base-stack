@@ -69,7 +69,7 @@ If you want to run the `hawkbit` Update Backend Server, you'll also need
 - `docker-compose`
 
 
-## Branching strategy
+## Branching and version control strategy
 
 The branches in this repo are aligned with the Yocto project releases.
 
@@ -80,8 +80,16 @@ No longer maintained releases (no further feature development):
 - _kirkstone_
 - _dunfell_ 
 
-Note: You have to checkout the corresponding branch as the build environment and features
-can significantly differ.
+To control how upstream changes enter builds in this repo, `kas` provides `lockfiles` that specify
+the specific revisions to be checked out. They were created using
+
+```bash
+./run-kas dump --lock --inplace conf/kas.<machine>.yml
+```
+
+If you want to update the revisions, you can do so using the same command again with the added option `--update`.
+In case you want to work with latest greatest, simply remove the respective `lockfile` next to the configuration
+you want to build.
 
 
 ## Supported machines and images
