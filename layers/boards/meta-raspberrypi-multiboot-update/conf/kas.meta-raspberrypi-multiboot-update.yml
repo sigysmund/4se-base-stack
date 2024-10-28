@@ -1,7 +1,7 @@
 header:
   version: 1
 
-machine: raspberrypi3
+machine: raspberrypi3-multiboot
 
 repos:
   meta-raspberrypi:
@@ -13,7 +13,5 @@ repos:
 
 local_conf_header:
   meta-raspberrypi-multiboot-update: |
-    include conf/machine/raspberrypi3-extra.conf
-
     # Enable license for linux-firmware-rpidistro
     LICENSE_FLAGS_ACCEPTED += "synaptics-killswitch"

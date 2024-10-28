@@ -1,13 +1,9 @@
 header:
   version: 1
 
-machine: qemux86-64
+machine: qemux86-64-multiboot
 
 repos:
   emx-base-stack:
     layers:
       layers/boards/meta-qemu-multiboot-update:
-
-local_conf_header:
-  meta-qumu-multiboot-update: |
-    include conf/machine/qemux86-64-extra.conf

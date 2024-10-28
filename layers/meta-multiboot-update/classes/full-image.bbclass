@@ -17,8 +17,6 @@ inherit image
 RECOVERY_IMAGE_NAME ?= "recovery-image"
 SYSTEM_IMAGE_NAME ?= "system-image"
 
-require board-definitions/${MACHINE}.inc
-
 WKS_FILE = "multiboot.wks.in"
 IMAGE_FSTYPES = "wic.bz2 wic.bmap"
 

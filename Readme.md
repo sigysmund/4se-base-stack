@@ -99,8 +99,8 @@ used development boards, such as the Raspberry Pi.
 
 Currently supported boards:
 
-- RaspberryPi 3 B+ _[MACHINE=raspberrypi3]_
-- QEMU _[MACHINE=qemux86-64]_
+- RaspberryPi 3 B+ _[MACHINE=raspberrypi3-multiboot]_
+- QEMU _[MACHINE=qemux86-64-multiboot]_
 
 For these, the following images can be built:
 
