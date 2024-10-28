@@ -10,7 +10,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 inherit systemd
 
 SRC_URI += " \
-    file://sbin/update-observer.sh \
+    file://usr/sbin/update-observer.sh \
     file://systemd/update-observer.service \
     file://systemd/regular-operation.target \
 "
@@ -31,7 +31,7 @@ do_install() {
     install -d ${D}${sbindir}
     install -d ${D}${systemd_system_unitdir}
     
-    install -D -m 0770 ${WORKDIR}/sbin/update-observer.sh ${D}${sbindir}/update-observer
+    install -D -m 0770 ${WORKDIR}/usr/sbin/update-observer.sh ${D}${sbindir}/update-observer
     install -m 0644 ${WORKDIR}/systemd/update-observer.service ${D}${systemd_system_unitdir}
 
     install -m 0644 ${WORKDIR}/systemd/regular-operation.target ${D}${systemd_system_unitdir}

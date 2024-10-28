@@ -9,7 +9,7 @@ function klog() {
 
 function continue_init() {
     klog "Hand-over to original init routine..."
-    exec /sbin/"{{ original_init_name }}"
+    exec /usr/sbin/"{{ original_init_name }}"
 }
 
 # Ensure that the regular init process takes over in any case

@@ -28,7 +28,7 @@ python() {
 }
 
 SRC_URI += " \
-    file://sbin/pre-init.j2 \
+    file://usr/sbin/pre-init.j2 \
 "
 
 # Install guaranteed mountpoints and directories
@@ -51,10 +51,10 @@ do_install() {
 inherit templating
 
 FILES:${PN} += " \
-    /sbin/${FS_PRE_INIT_NAME} \
+    ${sbindir}/${FS_PRE_INIT_NAME} \
 "
 
-PRE_INIT_TEMPLATE_PATH = "${WORKDIR}/sbin/pre-init.j2"
+PRE_INIT_TEMPLATE_PATH = "${WORKDIR}/usr/sbin/pre-init.j2"
 
 python do_patch() {
     params = { 
@@ -67,8 +67,8 @@ python do_patch() {
 }
 
 do_install:append() {
-    install -d ${D}/sbin
-    install -m 0775 ${WORKDIR}/sbin/pre-init ${D}/sbin/${FS_PRE_INIT_NAME}
+    install -d ${D}${sbindir}
+    install -m 0775 ${WORKDIR}/usr/sbin/pre-init ${D}${sbindir}/${FS_PRE_INIT_NAME}
 }
 
 SRC_URI += " \
