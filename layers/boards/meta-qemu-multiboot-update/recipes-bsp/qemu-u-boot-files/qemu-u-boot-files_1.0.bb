@@ -25,7 +25,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 COMPATIBLE_MACHINE = "(qemuarm|qemuarm-multiboot|qemux86-64|qemux86-64-multiboot)"
 
 do_uboot_mkimage() {
-    uboot-mkimage -A "x86-64" -O linux -T script -C none -a 0 -e 0 \
+    uboot-mkimage -A "x86_64" -O linux -T script -C none -a 0 -e 0 \
                   -n "U-boot script" -d ${WORKDIR}/boot.script \
                   ${B}/boot.scr
 }
