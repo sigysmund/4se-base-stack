@@ -13,6 +13,8 @@ SRC_URI += " \
     file://etc/fstab.shared \
 "
 
+UNPACKDIR = "${WORKDIR}/sources-unpack"
+
 FILES:${PN} += " \
     ${sysconfdir}/fstab \
 "
@@ -20,6 +22,6 @@ FILES:${PN} += " \
 do_install() {
     install -d ${D}/${sysconfdir}
 
-    install -m 0775 ${WORKDIR}/etc/fstab.ro ${D}/${sysconfdir}/fstab
+    install -m 0775 ${UNPACKDIR}/etc/fstab.ro ${D}/${sysconfdir}/fstab
     cat ${WORKDIR}/etc/fstab.shared >> ${D}/${sysconfdir}/fstab
 }

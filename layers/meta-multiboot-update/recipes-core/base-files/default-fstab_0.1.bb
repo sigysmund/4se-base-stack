@@ -12,11 +12,13 @@ SRC_URI += " \
     file://etc/fstab.default \
 "
 
+UNPACKDIR = "${WORKDIR}/sources-unpack"
+
 FILES:${PN} += " \
     ${sysconfdir}/fstab \
 "
 
 do_install() {
     install -d ${D}/${sysconfdir}
-    install -m 0775 ${WORKDIR}/etc/fstab.default ${D}/${sysconfdir}/fstab
+    install -m 0775 ${UNPACKDIR}/etc/fstab.default ${D}/${sysconfdir}/fstab
 }
