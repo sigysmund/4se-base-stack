@@ -13,7 +13,7 @@ readonly SCRIPT_DIR
 REPRODUCIBLE_TIMESTAMP="$(git show -s --format=%ct HEAD)"
 readonly REPRODUCIBLE_TIMESTAMP
 
-readonly KAS_RELEASE="4.5"
+readonly KAS_RELEASE="4.6"
 
 readonly KAS_CONTAINER_CMD="${SCRIPT_DIR}"/scripts/kas-"${KAS_RELEASE}"/kas-container
 readonly KAS_NATIVE_CMD="${SCRIPT_DIR}"/scripts/kas-"${KAS_RELEASE}"/run-kas
