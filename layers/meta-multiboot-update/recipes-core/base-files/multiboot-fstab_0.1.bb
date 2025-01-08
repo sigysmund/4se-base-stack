@@ -23,5 +23,5 @@ do_install() {
     install -d ${D}/${sysconfdir}
 
     install -m 0775 ${UNPACKDIR}/etc/fstab.ro ${D}/${sysconfdir}/fstab
-    cat ${WORKDIR}/etc/fstab.shared >> ${D}/${sysconfdir}/fstab
+    cat ${UNPACKDIR}/etc/fstab.shared >> ${D}/${sysconfdir}/fstab
 }
