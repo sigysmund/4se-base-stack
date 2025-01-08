@@ -1,5 +1,5 @@
-inherit set-root-pwd
-inherit enable-wifi-ap
+#inherit set-root-pwd
+#inherit enable-wifi-ap
 
 IMAGE_INSTALL += " \
     loadkeys \

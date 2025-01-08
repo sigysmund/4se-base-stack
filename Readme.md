@@ -1,7 +1,5 @@
 # Embedded Linux Base Stack
 
-[![Build [scarthgap|raspberrypi]](https://ci.seydell.org/buildStatus/icon?job=emx-base-stack_scarthgap_raspberrypi3&subject=scarthgap/raspberrypi3)](https://ci.seydell.org/job/emx-base-stack_scarthgap_raspberrypi3/)
-
 This repository aims to provide a reference implementation for updateable, secure embedded Linux systems
 that are built with the Yocto build system.
 
@@ -36,7 +34,7 @@ To have something ready to install on one of the supported boards, you need to
 **(2)** Pull the repository
 
 ```bash
-git clone https://github.com/JSydll/emx-base-stack
+git clone https://github.com/sigysmund/4se-base-stack
 ```
 
 **(3)** Optional: Provide custom configure for some features (e.g. by setting up a `.env` file, see below).
@@ -100,12 +98,12 @@ you want to build.
 ## Supported machines and images
 
 The approach is to gradually expand the support on different platforms, starting with some of the widely
-used development boards, such as the Raspberry Pi.
+used development boards, such as the Raspberry Pi and Intel.
 
 Currently supported boards:
 
-- RaspberryPi 3 B+ _[MACHINE=raspberrypi3-multiboot]_
-- QEMU _[MACHINE=qemux86-64-multiboot]_
+- Intel _[MACHINE=intel-multiboot]_
+- QEMU x86_64 _[MACHINE=qemux86-64-multiboot]_
 
 For these, the following images can be built:
 
@@ -131,7 +129,7 @@ The board specifc integrations can be selected using the appropriate `MACHINE` n
 
 Like the configuration, the build environment is provided by [kas](https://github.com/siemens/kas).
 The `./run-kas` script provided in this repo is only a shallow wrapper around the scripts copied from upstream kas, 
-currently at version 4.5, like recommended by the respective documentation.
+currently at version 4.6, like recommended by the respective documentation.
 
 If you want to stay in the bitbake environment (and not only execute a single build command), you can use
 ```bash
@@ -149,6 +147,8 @@ Depending on the hardware, this might require specific tools provided by the boa
 In the case of popular single-board-computers like the RaspberryPi, the external SD card needs
 to be flashed with the image - which is most easily done with a tool like
 [Etcher](https://www.balena.io/etcher/).
+
+... or simplu use ```dd```.
 
 As soon as the device is initially flashed with the expected partitioning and software,
 **update bundles** can be installed by bringing them on the device and simply running
