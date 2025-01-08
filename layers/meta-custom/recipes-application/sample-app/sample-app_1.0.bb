@@ -9,6 +9,8 @@ SRC_URI += " \
     file://sample-app.service \
 "
 
+UNPACKDIR = "${WORKDIR}/sources-unpack"
+
 SYSTEMD_SERVICE:${PN} = " \
     sample-app.service \
 "
@@ -19,5 +21,5 @@ FILES:${PN} += "\
 
 do_install() {
     install -d ${D}${systemd_system_unitdir}
-    install -m 0644 ${WORKDIR}/sample-app.service ${D}${systemd_system_unitdir}/
+    install -m 0644 ${UNPACKDIR}/sample-app.service ${D}${systemd_system_unitdir}/
 }

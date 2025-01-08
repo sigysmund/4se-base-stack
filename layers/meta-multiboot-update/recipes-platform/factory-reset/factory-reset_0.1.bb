@@ -11,6 +11,8 @@ SRC_URI += " \
     file://usr/bin/factory-reset.sh \
 "
 
+UNPACKDIR = "${WORKDIR}/sources-unpack"
+
 FILES:${PN} += " \
     ${bindir}/factory-reset \
 "
@@ -23,5 +25,5 @@ RDEPENDS:${PN} += " \
 
 do_install:append() {
     install -d ${D}/${bindir}
-    install -m 0775 ${WORKDIR}/usr/bin/factory-reset.sh ${D}/${bindir}/factory-reset
+    install -m 0775 ${UNPACKDIR}/usr/bin/factory-reset.sh ${D}/${bindir}/factory-reset
 }

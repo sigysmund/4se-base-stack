@@ -14,6 +14,8 @@ SRC_URI = " \
     file://boot.script \
 "
 
+UNPACKDIR = "${WORKDIR}/sources-unpack"
+
 inherit deploy nopackages
 
 DEPENDS = "u-boot-mkimage-native"

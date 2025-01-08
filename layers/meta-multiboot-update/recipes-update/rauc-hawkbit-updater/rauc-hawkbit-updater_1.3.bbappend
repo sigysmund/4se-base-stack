@@ -31,5 +31,5 @@ python do_patch:append() {
 }
 
 do_install:append() {
-    install -m 644 ${WORKDIR}/update-backend.conf ${D}${sysconfdir}/${PN}/config.conf
+    install -m 644 ${UNPACKDIR}/update-backend.conf ${D}${sysconfdir}/${PN}/config.conf
 }

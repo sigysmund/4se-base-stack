@@ -28,6 +28,8 @@ SRC_URI += " \
     file://usr/sbin/pre-init.j2 \
 "
 
+UNPACKDIR = "${WORKDIR}/sources-unpack"
+
 # Install guaranteed mountpoints and directories
 # -----
 FILES:${PN} += " \
@@ -50,8 +52,6 @@ inherit templating
 FILES:${PN} += " \
     ${sbindir}/${FS_PRE_INIT_NAME} \
 "
-
-UNPACKDIR = "${WORKDIR}/sources-unpack"
 
 PRE_INIT_TEMPLATE_PATH = "${UNPACKDIR}/usr/sbin/pre-init.j2"
 

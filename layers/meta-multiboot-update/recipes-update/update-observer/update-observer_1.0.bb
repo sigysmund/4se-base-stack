@@ -15,6 +15,8 @@ SRC_URI += " \
     file://systemd/regular-operation.target \
 "
 
+UNPACKDIR = "${WORKDIR}/sources-unpack"
+
 RDEPENDS:${PN} = "bash inotify-tools sw-mode-control"
 
 SYSTEMD_SERVICE:${PN} = " \
@@ -31,8 +33,8 @@ do_install() {
     install -d ${D}${sbindir}
     install -d ${D}${systemd_system_unitdir}
     
-    install -D -m 0770 ${WORKDIR}/usr/sbin/update-observer.sh ${D}${sbindir}/update-observer
-    install -m 0644 ${WORKDIR}/systemd/update-observer.service ${D}${systemd_system_unitdir}
+    install -D -m 0770 ${UNPACKDIR}/usr/sbin/update-observer.sh ${D}${sbindir}/update-observer
+    install -m 0644 ${UNPACKDIR}/systemd/update-observer.service ${D}${systemd_system_unitdir}
 
-    install -m 0644 ${WORKDIR}/systemd/regular-operation.target ${D}${systemd_system_unitdir}
+    install -m 0644 ${UNPACKDIR}/systemd/regular-operation.target ${D}${systemd_system_unitdir}
 }
