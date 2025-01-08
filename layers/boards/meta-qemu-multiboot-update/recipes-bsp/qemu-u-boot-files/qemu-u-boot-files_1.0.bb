@@ -20,10 +20,10 @@ DEPENDS = "u-boot-mkimage-native"
 INHIBIT_DEFAULT_DEPS = "1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-COMPATIBLE_MACHINE = "(qemuarm|qemuarm-multiboot)"
+COMPATIBLE_MACHINE = "(qemuarm|qemuarm-multiboot|qemux86-64|qemux86-64-multiboot)"
 
 do_uboot_mkimage() {
-    uboot-mkimage -A arm -O linux -T script -C none -a 0 -e 0 \
+    uboot-mkimage -A "x86-64" -O linux -T script -C none -a 0 -e 0 \
                   -n "U-boot script" -d ${WORKDIR}/boot.script \
                   ${B}/boot.scr
 }

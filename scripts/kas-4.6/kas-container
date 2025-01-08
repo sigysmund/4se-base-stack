@@ -27,24 +27,28 @@
 
 set -e
 
-KAS_IMAGE_VERSION_DEFAULT="4.5"
+KAS_IMAGE_VERSION_DEFAULT="4.6"
 KAS_CONTAINER_IMAGE_PATH_DEFAULT="ghcr.io/siemens/kas"
 KAS_CONTAINER_IMAGE_NAME_DEFAULT="kas"
 KAS_CONTAINER_SELF_NAME="$(basename "$0")"
 
+# usage [exit_code]
 usage()
 {
+	EXIT_CODE="$1"
 	SELF="${KAS_CONTAINER_SELF_NAME}"
+
 	printf "%b" "Usage: ${SELF} [OPTIONS] { build | shell } [KASOPTIONS] [KASFILE]\n"
-	printf "%b" "       ${SELF} [OPTIONS] { checkout | dump } [KASOPTIONS] [KASFILE]\n"
+	printf "%b" "       ${SELF} [OPTIONS] { checkout | dump | lock } [KASOPTIONS] [KASFILE]\n"
 	printf "%b" "       ${SELF} [OPTIONS] for-all-repos [KASOPTIONS] [KASFILE] COMMAND\n"
-	printf "%b" "       ${SELF} [OPTIONS] { clean | cleansstate | cleanall} [KASFILE]\n"
+	printf "%b" "       ${SELF} [OPTIONS] { clean | cleansstate | cleanall } [KASFILE]\n"
 	printf "%b" "       ${SELF} [OPTIONS] menu [KCONFIG]\n"
 	printf "%b" "\nPositional arguments:\n"
 	printf "%b" "build\t\t\tCheck out repositories and build target.\n"
 	printf "%b" "checkout\t\tCheck out repositories but do not build.\n"
 	printf "%b" "dump\t\t\tCheck out repositories and write flat version\n"
 	printf "%b" "    \t\t\tof config to stdout.\n"
+	printf "%b" "lock\t\t\tCreate and update kas project lockfiles\n"
 	printf "%b" "shell\t\t\tRun a shell in the build environment.\n"
 	printf "%b" "for-all-repos\t\tRun specified command in each repository.\n"
 	printf "%b" "clean\t\t\tClean build artifacts, keep sstate cache and " \
@@ -63,9 +67,7 @@ usage()
 	printf "%b" "--runtime-args\t\tAdditional arguments to pass to the " \
 			"container runtime\n"
 	printf "%b" "\t\t\tfor running the build.\n"
-	printf "%b" "-d\t\t\tPrint debug output (deprecated, use -l debug).\n"
 	printf "%b" "-l, --log-level\t\tSet log level (default=info).\n"
-	printf "%b" "-v\t\t\tSame as -d (deprecated).\n"
 	printf "%b" "--version\t\tprint program version.\n"
 	printf "%b" "--ssh-dir\t\tDirectory containing SSH configurations.\n"
 	printf "%b" "\t\t\tAvoid \$HOME/.ssh unless you fully trust the " \
@@ -80,10 +82,12 @@ usage()
 		    "\t\t\t(default for build command)\n"
 	printf "%b" "--repo-rw\t\tMount current repository writeable\n" \
 		    "\t\t\t(default for shell command)\n"
+	printf "%b" "-h, --help\t\tShow this help message and exit.\n"
 	printf "%b" "\n"
 	printf "%b" "You can force the use of podman over docker using " \
 		    "KAS_CONTAINER_ENGINE=podman.\n"
-	exit 1
+
+	exit "${EXIT_CODE:-1}"
 }
 
 fatal_error(){
@@ -269,11 +273,6 @@ while [ $# -gt 0 ]; do
 		KAS_REPO_MOUNT_OPT="rw"
 		shift 1
 		;;
-	-v | -d)
-		KAS_VERBOSE=1
-		KAS_OPTIONS_DIRECT="${KAS_OPTIONS_DIRECT} -d"
-		shift 1
-		;;
 	-l | --log-level)
 		if [ "$2" = "debug" ]; then
 			KAS_VERBOSE=1
@@ -285,6 +284,9 @@ while [ $# -gt 0 ]; do
 		echo "${KAS_CONTAINER_SELF_NAME} $KAS_IMAGE_VERSION_DEFAULT"
 		exit 0
 		;;
+	-h | --help)
+		usage 0
+		;;
 	--*)
 		usage
 		;;
@@ -293,7 +295,7 @@ while [ $# -gt 0 ]; do
 		shift 1
 		break
 		;;
-	shell)
+	shell|lock)
 		KAS_REPO_MOUNT_OPT_DEFAULT="rw"
 		KAS_CMD=$1
 		shift 1

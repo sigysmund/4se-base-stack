@@ -2,4 +2,4 @@ header:
   version: 1
   includes:
     - conf/shared/kas.project.yml
-    - layers/boards/meta-qemu-multiboot-update/conf/kas.meta-qemu-multiboot-update.yml
+    - layers/boards/meta-qemu-multiboot-update/conf/kas.meta-qemuarm-multiboot-update.yml

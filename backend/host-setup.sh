@@ -3,8 +3,8 @@ readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}" )" &>/dev/null &&
 
 readonly APT_PACKAGES=(
     git
-    docker
-    docker-compose
+    podman
+    podman-compose
 )
 readonly UPSTREAM_GIT="https://github.com/eclipse/hawkbit"
 

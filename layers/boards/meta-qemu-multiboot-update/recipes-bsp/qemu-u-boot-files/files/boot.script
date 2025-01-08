@@ -7,7 +7,9 @@ test -n "${BOOT_recovery_LEFT}" || setenv BOOT_recovery_LEFT 3
 # Partition scheme as defined in meta-multiboot-update/wic/multiboot.wks.in
 setenv virtio_device_num "0"
 setenv bootloader_env_partition "1"
-setenv dtb_file_name "qemuarm.dtb"
+
+# TODO: This var should be printed from MACHINE
+setenv dtb_file_name "qemux86-64.dtb"
 
 setenv bootargs_default ""
 

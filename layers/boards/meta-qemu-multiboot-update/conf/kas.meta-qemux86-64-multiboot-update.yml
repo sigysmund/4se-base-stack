@@ -1,9 +1,9 @@
 header:
   version: 1
 
-machine: qemuarm-multiboot
+machine: qemux86-64-multiboot
 
 repos:
-  emx-base-stack:
+  4se-base-stack:
     layers:
       layers/boards/meta-qemu-multiboot-update:

@@ -16,8 +16,6 @@ SRC_URI += " \
     file://grubenv \
     "
 
-S = "${WORKDIR}"
-
 inherit deploy
 
 do_install() {

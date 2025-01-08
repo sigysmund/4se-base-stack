@@ -30,19 +30,19 @@ while [[ $# -gt 0 ]]; do
             exit 0
             ;;
         init)
-            docker-compose -f "${DOCKER_COMPOSE_PATH}" up -d
+            podman-compose -f "${DOCKER_COMPOSE_PATH}" up -d
             exit $?
             ;;
         start)
-            docker-compose -f "${DOCKER_COMPOSE_PATH}" start
+            podman-compose -f "${DOCKER_COMPOSE_PATH}" start
             exit $?
             ;;
         stop)
-            docker-compose -f "${DOCKER_COMPOSE_PATH}" stop
+            podman-compose -f "${DOCKER_COMPOSE_PATH}" stop
             exit $?
             ;;
         clean)
-            docker-compose -f "${DOCKER_COMPOSE_PATH}" down
+            podman-compose -f "${DOCKER_COMPOSE_PATH}" down
             exit $?
             ;;
         *)

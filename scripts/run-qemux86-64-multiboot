@@ -1,0 +1,21 @@
+#!/bin/bash
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+readonly SCRIPT_DIR
+readonly REPO_ROOT="${SCRIPT_DIR}/../"
+
+# Allow to use externally provided artifacts
+readonly BUILD_ARTIFACT_DIR="${1:-tmp/deploy/images/qemux86-64-multiboot}"
+readonly ROOTFS_BASENAME="${BUILD_ARTIFACT_DIR}/full-image-qemux86-64-multiboot"
+
+# Note: Specifying build artifacts explicitly avoids having to run bitbake -e full-image
+# for autodetecting MACHINE and ROOTFS and hence speeds up the start of the emulation.
+(
+cd ${REPO_ROOT}
+./run-kas --log-level warning --runtime-args "--net=host" \
+    shell conf/kas.qemuarm.yml \
+    -c "MACHINE=qemux86-64-multiboot BIOS=${BUILD_ARTIFACT_DIR}/u-boot.bin \
+        ROOTFS=${ROOTFS_BASENAME}.wic.qcow2 \
+        runqemu ${ROOTFS_BASENAME}.qemuboot.conf nographic serial slirp"
+)

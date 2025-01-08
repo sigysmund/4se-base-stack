@@ -1,0 +1,9 @@
+header:
+  version: 1
+
+machine: qemuarm-multiboot
+
+repos:
+  4se-base-stack:
+    layers:
+      layers/boards/meta-qemu-multiboot-update:

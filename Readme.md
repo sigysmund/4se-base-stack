@@ -47,6 +47,11 @@ git clone https://github.com/JSydll/emx-base-stack
 ./run-kas build conf/<machine>.yml <image [default: full-image]>
 ```
 
+Example: \
+```bash
+./run-kas build conf/kas.qemux86-64.yml
+```
+
 **(5)** Locate the `*.wic` image file under `build/tmp/deploy/<machine>/` and flash it
 on the device/ memory card using a tool like `Etcher`. 
 

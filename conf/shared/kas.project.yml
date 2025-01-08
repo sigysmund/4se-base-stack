@@ -13,7 +13,7 @@ distro: poky
 
 defaults:
   repos:
-    branch: "scarthgap"
+    branch: "styhead"
 
 repos:
   poky:
@@ -25,19 +25,23 @@ repos:
     url: "https://github.com/openembedded/meta-openembedded"
     layers:
       meta-oe:
+      meta-filesystems:
       meta-multimedia:
       meta-networking:
       meta-python:
 
   meta-poky-extensions:
-    url: "https://github.com/JSydll/meta-poky-extensions"
+    url: "https://github.com/sigysmund/meta-poky-extensions"
   meta-common-emx:
-    url: "https://github.com/JSydll/meta-common-emx"
+    url: "https://github.com/sigysmund/meta-common-emx"
 
   meta-rauc:
     url: "https://github.com/rauc/meta-rauc.git"
 
-  emx-base-stack:
+  meta-intel:
+    url: "https://git.yoctoproject.org/meta-intel"
+
+  4se-base-stack:
     layers:
       layers/meta-multiboot-update:
       layers/meta-custom:
@@ -49,16 +53,16 @@ bblayers_conf_header:
 local_conf_header:
   main: |
     # --- General ---
-    PACKAGE_CLASSES ?= "package_ipk"
+    PACKAGE_CLASSES ?= "package_deb"
     SDKMACHINE = "x86_64"
     CONF_VERSION = "2"
 
     # --- Device / distro infos ---
-    PRODUCT_NAME = "emx-base-demo"
-    PRODUCT_VERSION = "0.3.0"
+    PRODUCT_NAME = "4se-base-demo"
+    PRODUCT_VERSION = "0.0.1"
 
     hostname:pn-base-files = "${PRODUCT_NAME}"
-    DISTRO_NAME:pn-base-files = "emx-base"
+    DISTRO_NAME:pn-base-files = "4se-base"
     DISTRO_VERSION:pn-base-files = "${PRODUCT_VERSION}"
 
     # --- Distro & image features ---
