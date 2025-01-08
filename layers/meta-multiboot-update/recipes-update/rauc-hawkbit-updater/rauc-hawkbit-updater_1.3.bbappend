@@ -15,7 +15,9 @@ SRC_URI:append := "  \
 
 inherit templating
 
-TEMPLATE_FILE = "${WORKDIR}/update-backend.conf.j2"
+UNPACKDIR = "${WORKDIR}/sources-unpack"
+
+TEMPLATE_FILE = "${UNPACKDIR}/update-backend.conf.j2"
 
 python do_patch:append() {
     params = {

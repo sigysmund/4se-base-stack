@@ -7,7 +7,9 @@ SRC_URI:append := "  \
 
 inherit templating
 
-TEMPLATE_FILE = "${WORKDIR}/system.conf.j2"
+UNPACKDIR = "${WORKDIR}/sources-unpack"
+
+TEMPLATE_FILE = "${UNPACKDIR}/system.conf.j2"
 
 # Add the variables used below to the environment
 include rauc-environment.inc

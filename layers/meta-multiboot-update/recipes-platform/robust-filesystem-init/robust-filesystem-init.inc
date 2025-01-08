@@ -51,7 +51,9 @@ FILES:${PN} += " \
     ${sbindir}/${FS_PRE_INIT_NAME} \
 "
 
-PRE_INIT_TEMPLATE_PATH = "${WORKDIR}/usr/sbin/pre-init.j2"
+UNPACKDIR = "${WORKDIR}/sources-unpack"
+
+PRE_INIT_TEMPLATE_PATH = "${UNPACKDIR}/usr/sbin/pre-init.j2"
 
 python do_patch() {
     params = { 
@@ -65,7 +67,7 @@ python do_patch() {
 
 do_install:append() {
     install -d ${D}${sbindir}
-    install -m 0775 ${WORKDIR}/usr/sbin/pre-init ${D}${sbindir}/${FS_PRE_INIT_NAME}
+    install -m 0775 ${UNPACKDIR}/usr/sbin/pre-init ${D}${sbindir}/${FS_PRE_INIT_NAME}
 }
 
 SRC_URI += " \
@@ -91,10 +93,10 @@ SYSTEMD_SERVICE:${PN} += "initialize-filesystem.service"
 
 do_install:append() {
     install -d ${D}/${bindir}
-    install -m 0775 ${WORKDIR}/usr/bin/initialize-filesystem.sh ${D}/${bindir}/initialize-filesystem
+    install -m 0775 ${UNPACKDIR}/usr/bin/initialize-filesystem.sh ${D}/${bindir}/initialize-filesystem
 
     install -d ${D}/${systemd_unitdir}/system
-    install -m 0644 ${WORKDIR}/systemd/initialize-filesystem.service ${D}/${systemd_unitdir}/system
+    install -m 0644 ${UNPACKDIR}/systemd/initialize-filesystem.service ${D}/${systemd_unitdir}/system
 
     install -d ${D}/media
 }
