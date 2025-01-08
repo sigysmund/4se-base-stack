@@ -14,7 +14,7 @@ readonly ROOTFS_BASENAME="${BUILD_ARTIFACT_DIR}/full-image-qemux86-64-multiboot"
 (
 cd ${REPO_ROOT}
 ./run-kas --log-level warning --runtime-args "--net=host" \
-    shell conf/kas.qemuarm.yml \
+    shell conf/kas.qemux86-64.yml \
     -c "MACHINE=qemux86-64-multiboot BIOS=${BUILD_ARTIFACT_DIR}/u-boot.bin \
         ROOTFS=${ROOTFS_BASENAME}.wic.qcow2 \
         runqemu ${ROOTFS_BASENAME}.qemuboot.conf nographic serial slirp"
