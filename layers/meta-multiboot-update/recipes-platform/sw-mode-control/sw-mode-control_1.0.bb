@@ -11,8 +11,10 @@ SRC_URI += " \
     file://usr/bin/sw-mode-control.sh \
 "
 
+UNPACKDIR = "${WORKDIR}/sources-unpack"
+
 RDEPENDS:${PN} = "bash rauc"
 
 do_install() {
-    install -D -m 0770 ${WORKDIR}/usr/bin/sw-mode-control.sh ${D}${bindir}/sw-mode-control
+    install -D -m 0770 ${UNPACKDIR}/usr/bin/sw-mode-control.sh ${D}${bindir}/sw-mode-control
 }
