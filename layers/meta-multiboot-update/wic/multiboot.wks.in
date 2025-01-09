@@ -12,7 +12,7 @@ ${WIC_BOOTLOADER_EXTRA_PART_CMD}
 ${WIC_BOOTLOADER_ENV_PART_CMD}
 
 # Recovery
-part --ondisk ${WIC_DEVICE} ${WIC_KERNELIMG_SOURCE} --fstype=vfat --fixed-size ${WIC_KERNELIMG_PART_SIZE} ${WIC_FIRST_PARTITION_OFFSET} --label boot_recov 
+part --ondisk ${WIC_DEVICE} ${WIC_KERNELIMG_SOURCE} --fstype=vfat --fixed-size ${WIC_KERNELIMG_PART_SIZE} ${WIC_FIRST_PARTITION_OFFSET} --label boot_recov
 part --ondisk ${WIC_DEVICE} ${WIC_RECOVERY_ROOTFS_SOURCE} --fstype=squashfs --fixed-size ${WIC_RECOVERY_ROOTFS_PART_SIZE}
 
 # System (incl. update capability)

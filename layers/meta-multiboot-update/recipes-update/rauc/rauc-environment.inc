@@ -32,11 +32,11 @@ python __anonymous() {
         d.setVar("EXTRA_BOOTLOADER_OPTIONS", "grubenv=/grubenv/grubenv")
         if enable_dual_bootloader:
             if ptable_type == "gpt":
-                # Note: This assumes a fixed layout of 2x 40M for the bootloader slots.
+                # Note: This assumes a fixed layout of 2x 64M for the bootloader slots.
                 d.setVar("BOOTLOADER_SLOT_CONF",
                         "[slot.bootloader.0]\n"
                         "device=" + device + "1\n"
                         "type=boot-gpt-switch\n"
                         "region-start=4M\n"
-                        "region-size=80M")
+                        "region-size=128M")
 }

@@ -1,0 +1,13 @@
+header:
+  version: 1
+
+machine: intel-skylake-64-multiboot
+
+repos:
+
+  meta-intel:
+    url: "https://git.yoctoproject.org/meta-intel"
+
+  4se-base-stack:
+    layers:
+      layers/boards/meta-intel-multiboot-update:
