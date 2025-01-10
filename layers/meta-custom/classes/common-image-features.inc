@@ -1,4 +1,4 @@
-#inherit set-root-pwd
+inherit set-root-pwd
 #inherit enable-wifi-ap
 
 IMAGE_INSTALL += " \

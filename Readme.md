@@ -201,6 +201,34 @@ Note that `ssh` uses lower case `-p` while `scp` upper case `-P` to set the port
 
 With this, you can inspect the build result, test new applications or install updates.
 
+## Running N100
+
+Flashed WIC image on M.2 SSD: 
+
+```
+Disk /dev/sdc: 500118192 sectors, 238.5 GiB
+Model: TS-CM10G        
+Sector size (logical/physical): 512/512 bytes
+Disk identifier (GUID): 00000000-0000-0000-0000-00004D9B9EF0
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 11288576
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 139231 sectors (68.0 MiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048          133119   64.0 MiB    0700  boot
+   2          270336          278527   4.0 MiB     0700  grubenv
+   3          278528          540671   128.0 MiB   0700  boot_recov
+   4          540672         2113535   768.0 MiB   8300  primary
+   5         2113536         2375679   128.0 MiB   0700  boot_sys
+   6         2375680         6569983   2.0 GiB     8300  rootfs
+   7         6569984         6832127   128.0 MiB   0700  boot_b
+   8         6832128        11026431   2.0 GiB     8300  rootfs_b
+   9        11026432        11288575   128.0 MiB   8300  appfs
+   
+```
+
 
 ## Contribution
 

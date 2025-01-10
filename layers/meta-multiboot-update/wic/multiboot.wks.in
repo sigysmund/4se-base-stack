@@ -16,12 +16,12 @@ part --ondisk ${WIC_DEVICE} ${WIC_KERNELIMG_SOURCE} --fstype=vfat --fixed-size $
 part --ondisk ${WIC_DEVICE} ${WIC_RECOVERY_ROOTFS_SOURCE} --fstype=squashfs --fixed-size ${WIC_RECOVERY_ROOTFS_PART_SIZE}
 
 # System (incl. update capability)
-part --ondisk ${WIC_DEVICE} ${WIC_KERNELIMG_SOURCE} --fstype=vfat --fixed-size ${WIC_KERNELIMG_PART_SIZE} --label boot_system 
+part --ondisk ${WIC_DEVICE} ${WIC_KERNELIMG_SOURCE} --fstype=vfat --fixed-size ${WIC_KERNELIMG_PART_SIZE} --label boot_sys
 part --ondisk ${WIC_DEVICE} ${WIC_SYSTEM_ROOTFS_SOURCE} --fstype=ext4 --fixed-size ${WIC_SYSTEM_ROOTFS_PART_SIZE} --label rootfs
 
 # System B (incl. update capability)
-part --ondisk ${WIC_DEVICE} ${WIC_KERNELIMG_SOURCE} --fstype=vfat --fixed-size ${WIC_KERNELIMG_PART_SIZE} --label boot_system 
-part --ondisk ${WIC_DEVICE} ${WIC_SYSTEM_B_ROOTFS_SOURCE} --fstype=ext4 --fixed-size ${WIC_SYSTEM_B_ROOTFS_PART_SIZE} --label rootfs
+part --ondisk ${WIC_DEVICE} ${WIC_KERNELIMG_SOURCE} --fstype=vfat --fixed-size ${WIC_KERNELIMG_PART_SIZE} --label boot_b
+part --ondisk ${WIC_DEVICE} ${WIC_SYSTEM_B_ROOTFS_SOURCE} --fstype=ext4 --fixed-size ${WIC_SYSTEM_B_ROOTFS_PART_SIZE} --label rootfs_b
 
 # Persistent data partition (automatically expanding to fill the rest of the disk)
 part --ondisk ${WIC_DEVICE} --fstype=ext4 --size ${WIC_APPFS_MIN_PART_SIZE} --fsoptions "x-systemd.growfs" --label appfs 

@@ -68,9 +68,12 @@ python do_patch() {
 do_install:append() {
     install -d ${D}${sbindir}
     install -m 0775 ${UNPACKDIR}/usr/sbin/pre-init ${D}${sbindir}/${FS_PRE_INIT_NAME}
+
+    install -d ${D}${sysconfdir}/systemd/system/systemd-networkd-wait-online.service.d
 }
 
 SRC_URI += " \
+    file://override.conf \
     file://usr/bin/initialize-filesystem.sh \
     file://systemd/initialize-filesystem.service \
 "
@@ -79,6 +82,7 @@ SRC_URI += " \
 # -----
 FILES:${PN} += " \
     /media \
+    ${sysconfdir}/systemd/system/systemd-networkd-wait-online.service.d/override.conf \
     ${bindir}/initialize-filesystem \
     ${systemd_unitdir}/initialize-filesystem.service \
 "
@@ -99,6 +103,8 @@ do_install:append() {
     install -m 0644 ${UNPACKDIR}/systemd/initialize-filesystem.service ${D}/${systemd_unitdir}/system
 
     install -d ${D}/media
+
+    install -m 644 ${UNPACKDIR}/override.conf ${D}${sysconfdir}/systemd/system/systemd-networkd-wait-online.service.d/
 }
 
 # Install the multiboot fstab
