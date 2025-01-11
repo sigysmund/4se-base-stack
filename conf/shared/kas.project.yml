@@ -26,6 +26,7 @@ repos:
     layers:
       meta-oe:
       meta-filesystems:
+      meta-initramfs:
       meta-multimedia:
       meta-networking:
       meta-python:

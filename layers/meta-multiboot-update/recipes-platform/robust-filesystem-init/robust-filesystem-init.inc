@@ -74,6 +74,7 @@ do_install:append() {
 
 SRC_URI += " \
     file://override.conf \
+    file://defaults.conf \
     file://usr/bin/initialize-filesystem.sh \
     file://systemd/initialize-filesystem.service \
 "
@@ -100,9 +101,13 @@ do_install:append() {
     install -m 0775 ${UNPACKDIR}/usr/bin/initialize-filesystem.sh ${D}/${bindir}/initialize-filesystem
 
     install -d ${D}/${systemd_unitdir}/system
+
     install -m 0644 ${UNPACKDIR}/systemd/initialize-filesystem.service ${D}/${systemd_unitdir}/system
 
     install -d ${D}/media
+
+    install -d ${D}/${sysconfdir}/systemd/user.conf.d
+    install -m 644 ${UNPACKDIR}/defaults.conf ${D}${sysconfdir}/systemd/user.conf.d/
 
     install -m 644 ${UNPACKDIR}/override.conf ${D}${sysconfdir}/systemd/system/systemd-networkd-wait-online.service.d/
 }

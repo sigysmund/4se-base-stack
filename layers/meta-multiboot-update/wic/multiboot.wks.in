@@ -24,4 +24,5 @@ part --ondisk ${WIC_DEVICE} ${WIC_KERNELIMG_SOURCE} --fstype=vfat --fixed-size $
 part --ondisk ${WIC_DEVICE} ${WIC_SYSTEM_B_ROOTFS_SOURCE} --fstype=ext4 --fixed-size ${WIC_SYSTEM_B_ROOTFS_PART_SIZE} --label rootfs_b
 
 # Persistent data partition (automatically expanding to fill the rest of the disk)
+part --ondisk ${WIC_DEVICE} --fstype=ext4 --size ${WIC_DATAFS_MIN_PART_SIZE} --label datafs
 part --ondisk ${WIC_DEVICE} --fstype=ext4 --size ${WIC_APPFS_MIN_PART_SIZE} --fsoptions "x-systemd.growfs" --label appfs 
